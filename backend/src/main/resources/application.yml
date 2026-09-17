@@ -6,7 +6,7 @@ spring:
   application:
     name: lunch-api
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:lunch}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:lunch}?sslmode=${DB_SSL_MODE:disable}
     username: ${DB_USER:lunch}
     password: ${DB_PASSWORD:lunch}
   jpa:

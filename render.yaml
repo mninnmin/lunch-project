@@ -1,12 +1,6 @@
-databases:
-  - name: lunch-db
-    plan: free
-    databaseName: lunch
-    user: lunch
-
 services:
   - type: web
-    name: lunch-api
+    name: lunch-project-api
     runtime: docker
     plan: free
     rootDir: backend
@@ -14,17 +8,19 @@ services:
     healthCheckPath: /actuator/health
     envVars:
       - key: DB_HOST
-        fromDatabase: { name: lunch-db, property: host }
+        sync: false
       - key: DB_PORT
-        fromDatabase: { name: lunch-db, property: port }
+        value: 5432
       - key: DB_NAME
-        fromDatabase: { name: lunch-db, property: database }
+        value: lunch
       - key: DB_USER
-        fromDatabase: { name: lunch-db, property: user }
+        sync: false
       - key: DB_PASSWORD
-        fromDatabase: { name: lunch-db, property: password }
+        sync: false
+      - key: DB_SSL_MODE
+        value: require
       - key: FRONTEND_URL
-        value: https://lunch.vercel.app
+        value: https://lunch-project.vercel.app
       - key: JWT_SECRET
         generateValue: true
       - key: GEMINI_API_KEY
