@@ -9,6 +9,12 @@
 - `PostgreSQL`: 메뉴와 추천 이력 저장
 - `RecommendationProvider`: 향후 Gemini 추천 구현을 꽂을 수 있는 전략 인터페이스
 
+## 배포 주소
+
+- 프론트엔드: <https://lunch-project.vercel.app>
+- 백엔드 API: <https://lunch-project-api.onrender.com>
+- 운영 DB: Neon PostgreSQL 17 (Singapore)
+
 ## 로컬 실행
 
 `docker compose up -d postgres`로 DB를 실행한 뒤 `backend`에서 `mvn spring-boot:run`, `frontend`에서 `npm install && npm run dev`를 실행합니다.
@@ -23,6 +29,6 @@
 
 ## 배포 시 참고
 
-- Render Blueprint는 루트의 `render.yaml`을 사용합니다.
+- Render Blueprint는 루트의 `render.yaml`을 사용합니다. DB 접속값은 secret 환경변수로 입력합니다.
 - 프론트 환경변수 `VITE_API_BASE_URL`에는 실제 Render 서비스 URL을 입력합니다.
-- Render 무료 PostgreSQL은 생성 후 30일에 만료되므로 찜 데이터를 계속 보존하려면 만료 전에 유료 플랜으로 전환하거나 외부 PostgreSQL로 이전해야 합니다.
+- 운영 DB는 기존 Render 프로젝트와 데이터를 섞지 않도록 별도의 Neon PostgreSQL 프로젝트로 분리했습니다.
